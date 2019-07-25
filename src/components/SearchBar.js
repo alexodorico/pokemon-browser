@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Suggestions from "./Suggestions";
-import axios from "axios";
 
 function SearchBar(props) {
   const [query, updateQuery] = useState("");
@@ -10,12 +9,11 @@ function SearchBar(props) {
     let filteredPokemon;
 
     if (query) {
-      filteredPokemon = props.pokemon.filter(item => {
+      filteredPokemon = props.pokemonList.filter(item => {
         const filter = query.toLowerCase();
         return item.name.includes(filter);
       });
 
-      console.log(filteredPokemon);
       updateSuggestions(filteredPokemon);
     } else {
       updateSuggestions([]);
@@ -26,17 +24,14 @@ function SearchBar(props) {
     updateQuery(e.target.value);
   }
 
-  function searchForPokemon() {
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${query}`)
-      .then(response => console.log(response.data))
-      .catch(error => console.log(error));
+  function passQuery() {
+    props.searchForPokemon(query);
   }
 
   return (
     <div>
       <input type="text" onChange={handleChange} />
-      <button onClick={searchForPokemon}>Search</button>
+      <button onClick={passQuery}>Search</button>
       <Suggestions suggestions={suggestions} />
     </div>
   );

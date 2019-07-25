@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SearchBar from "./components/SearchBar";
+import SearchResult from "./components/SearchResult";
 import "./main.scss";
 
 function App() {
-  const [pokemon, setPokemon] = useState([]);
+  const [pokemonList, setpokemonList] = useState([]);
+  const [result, setResult] = useState([]);
 
   useEffect(() => {
     getPokemon();
@@ -15,15 +17,29 @@ function App() {
       axios
         .get(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=50`)
         .then(response =>
-          setPokemon(pokemon => [...pokemon, ...response.data.results])
+          setpokemonList(pokemonList => [
+            ...pokemonList,
+            ...response.data.results
+          ])
         )
         .then(_ => getPokemon(offset + 50));
     }
   }
 
+  function searchForPokemon(query) {
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon/${query}`)
+      .then(response => setResult(response.data))
+      .catch(error => console.log(error));
+  }
+
   return (
     <div className="App">
-      <SearchBar pokemon={pokemon} />
+      <SearchBar
+        searchForPokemon={searchForPokemon}
+        pokemonList={pokemonList}
+      />
+      <SearchResult result={result} />
     </div>
   );
 }
