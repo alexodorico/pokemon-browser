@@ -18,14 +18,16 @@ function SearchBar(props) {
     } else {
       updateSuggestions([]);
     }
-  }, [query]);
+  }, [query, props.pokemonList]);
 
   function handleChange(e) {
     updateQuery(e.target.value);
   }
 
   function passQuery() {
-    props.searchForPokemon(query);
+    if (query) {
+      props.searchForPokemon(query);
+    }
   }
 
   return (

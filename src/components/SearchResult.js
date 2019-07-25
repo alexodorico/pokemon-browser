@@ -1,32 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 function SearchResult(props) {
-  const [types, setTypes] = useState([]);
-  const [imageSrc, setImageSrc] = useState("");
-
-  useEffect(() => {
-    if (props.result.types) {
-      getTypes();
-      setImageSrc(props.result.sprites.front_default);
-    }
-  }, [props]);
-
-  function getTypes() {
-    const typesArray = props.result.types.map(type => {
-      return type.type.name;
-    });
-
-    setTypes(typesArray);
-  }
-
   return (
     <div>
-      <img src={imageSrc} />
+      <img src={props.result.sprites.front_default} alt="Pokemon Sprite" />
       <h3>{props.result.id}</h3>
       <h3>{props.result.name}</h3>
       <ul>
-        {types.map(type => (
-          <li>{type}</li>
+        {props.result.types.map((type, i) => (
+          <li key={i}>{type.type.name}</li>
         ))}
       </ul>
     </div>

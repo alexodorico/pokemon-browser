@@ -6,7 +6,7 @@ import "./main.scss";
 
 function App() {
   const [pokemonList, setpokemonList] = useState([]);
-  const [result, setResult] = useState({});
+  const [result, setResult] = useState(undefined);
 
   useEffect(() => {
     getPokemon();
@@ -39,7 +39,7 @@ function App() {
         searchForPokemon={searchForPokemon}
         pokemonList={pokemonList}
       />
-      <SearchResult result={result} />
+      {result && <SearchResult result={result} />}
     </div>
   );
 }
