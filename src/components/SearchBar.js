@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
-function SearchBar() {
-  function handleUserInput() {}
+function SearchBar(props) {
+  function handleChange(e) {
+    props.handleChange(e.target.value);
+  }
 
-  return <input onChange={handleUserInput} type="text" />;
+  return <input type="text" onChange={handleChange} />;
 }
 
 export default SearchBar;
