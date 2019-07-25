@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ResultsList from "./components/ResultsList";
 import "./main.scss";
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
     getPokemon();
@@ -20,9 +22,25 @@ function App() {
     }
   }
 
+  function handleChange(e) {
+    let filteredPokemon;
+
+    if (e.target.value !== "") {
+      filteredPokemon = pokemon.filter(item => {
+        const filter = e.target.value.toLowerCase();
+        return item.name.includes(filter);
+      });
+
+      setResults(filteredPokemon);
+    } else {
+      setResults([]);
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header" />
+      <input type="text" onChange={handleChange} />
+      <ResultsList results={results} />
     </div>
   );
 }
