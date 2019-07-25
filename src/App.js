@@ -6,7 +6,7 @@ import "./main.scss";
 
 function App() {
   const [pokemonList, setpokemonList] = useState([]);
-  const [result, setResult] = useState([]);
+  const [result, setResult] = useState({});
 
   useEffect(() => {
     getPokemon();
