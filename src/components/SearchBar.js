@@ -42,9 +42,16 @@ function SearchBar(props) {
   }
 
   return (
-    <div class="search-wrapper">
-      <input type="text" id="search-bar" onChange={handleChange} />
-      <button onClick={passQuery}>Search</button>
+    <div>
+      <div className="search-wrapper">
+        <input
+          type="text"
+          id="search-bar"
+          placeholder="Search for a Pokémon"
+          onChange={handleChange}
+        />
+        <button onClick={passQuery}>Search</button>
+      </div>
       <Suggestions
         suggestions={suggestions}
         suggestionSearch={suggestionSearch}

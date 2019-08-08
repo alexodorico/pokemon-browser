@@ -11,7 +11,11 @@ function Suggestions(props) {
     </li>
   ));
 
-  return <ul>{markup}</ul>;
+  return (
+    <div>
+      <ul className="suggestions">{markup}</ul>
+    </div>
+  );
 }
 
 export default Suggestions;
