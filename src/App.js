@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import PokemonInfo from "./components/PokemonInfo";
 import "./main.scss";
