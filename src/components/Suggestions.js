@@ -2,7 +2,7 @@ import React from "react";
 
 function Suggestions(props) {
   function passQuery(e) {
-    props.passQuery(e.target.innerHTML);
+    props.suggestionSearch(e.target.innerHTML);
   }
 
   const markup = props.suggestions.map((result, i) => (

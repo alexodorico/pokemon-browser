@@ -24,19 +24,31 @@ function SearchBar(props) {
     updateQuery(e.target.value);
   }
 
-  function passQuery(query) {
+  function suggestionSearch(suggested) {
+    props.searchForPokemon(suggested);
+    resetSearch();
+  }
+
+  function passQuery() {
     if (query) {
       props.searchForPokemon(query);
-      updateSuggestions([]);
-      document.getElementById("search-bar").value = "";
+      resetSearch();
     }
+  }
+
+  function resetSearch() {
+    updateSuggestions([]);
+    document.getElementById("search-bar").value = "";
   }
 
   return (
     <div>
       <input type="text" id="search-bar" onChange={handleChange} />
       <button onClick={passQuery}>Search</button>
-      <Suggestions suggestions={suggestions} passQuery={passQuery} />
+      <Suggestions
+        suggestions={suggestions}
+        suggestionSearch={suggestionSearch}
+      />
     </div>
   );
 }
