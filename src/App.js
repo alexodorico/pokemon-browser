@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import SearchResult from "./components/SearchResult";
 import "./main.scss";
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <SearchBar
         searchForPokemon={searchForPokemon}
         pokemonList={pokemonList}
