@@ -27,12 +27,14 @@ function SearchBar(props) {
   function passQuery() {
     if (query) {
       props.searchForPokemon(query);
+      updateSuggestions([]);
+      document.getElementById("search-bar").value = "";
     }
   }
 
   return (
     <div>
-      <input type="text" onChange={handleChange} />
+      <input type="text" id="search-bar" onChange={handleChange} />
       <button onClick={passQuery}>Search</button>
       <Suggestions suggestions={suggestions} />
     </div>
