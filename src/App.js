@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
-import SearchResult from "./components/SearchResult";
+import PokemonInfo from "./components/PokemonInfo";
 import "./main.scss";
 
 function App() {
@@ -36,12 +36,12 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <h1>Pokémon Browser</h1>
       <SearchBar
         searchForPokemon={searchForPokemon}
         pokemonList={pokemonList}
       />
-      {result && <SearchResult result={result} />}
+      {result && <PokemonInfo result={result} />}
     </div>
   );
 }
