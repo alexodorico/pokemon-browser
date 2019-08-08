@@ -1,7 +1,7 @@
 import React from "react";
 
-function Header(props) {
-  return <h1>Pokemon Search</h1>;
+function Header() {
+  return <h1>Pokemon Browser</h1>;
 }
 
 export default Header;

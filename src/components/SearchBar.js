@@ -42,7 +42,7 @@ function SearchBar(props) {
   }
 
   return (
-    <div>
+    <div class="search-wrapper">
       <input type="text" id="search-bar" onChange={handleChange} />
       <button onClick={passQuery}>Search</button>
       <Suggestions
